@@ -4,20 +4,13 @@
 
 <script>
 export default {
-  data() {
+  async asyncData(context) {
+    const result = await context.$axios.get(
+      `http://localhost:8081/videos/${context.params.id}`,
+    );
     return {
-      videos: [
-        { id: '16', name: 'Intro to NuxtJs' },
-        { id: '17', name: 'Intro to VueJs' },
-        { id: '18', name: 'Intro to Advanced Techniques' },
-      ],
+      video: result.data,
     };
-  },
-
-  computed: {
-    video() {
-      return this.videos.find((video) => video.id === this.$route.params.id);
-    },
   },
 };
 </script>

@@ -11,8 +11,17 @@ const videos = [
   { id: '18', name: 'Intro to Advanced Techniques' },
 ];
 
-app.get('/', (req, res) => {
+app.get('/videos/:id', (req, res) => {
+  const video = videos.find((video) => video.id === req.params.id);
+  res.send(video);
+});
+
+app.get('/videos', (req, res) => {
   res.send(videos);
+});
+
+app.get('/', (req, res) => {
+  res.send('welcome');
 });
 
 app.listen(port, () => {

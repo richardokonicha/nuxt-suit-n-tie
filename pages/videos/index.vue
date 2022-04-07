@@ -13,9 +13,7 @@
 export default {
   name: 'VideosPage',
   async asyncData(context) {
-    let result = await context.$axios.get('http://localhost:8081');
-    debugger;
-    console.log(result.data);
+    let result = await context.$axios.get('http://localhost:8081/videos');
     return { videos: result.data };
   },
 };
