@@ -12,8 +12,11 @@
 <script>
 export default {
   name: 'VideosPage',
-  async asyncData(context) {
-    let result = await context.$axios.get('http://localhost:8081/videos');
+  head: {
+    title: 'Video list',
+  },
+  async asyncData({ $axios }) {
+    let result = await $axios.get('/videos');
     return { videos: result.data };
   },
 };
